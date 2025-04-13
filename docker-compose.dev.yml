@@ -1,0 +1,19 @@
+services:
+  portfolio-service:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    container_name: portfolio-service-dev
+    ports:
+      - "8101:8080"
+    env_file:
+      - .env
+    networks:
+    - portfolio-nw-dev 
+    command: ["mvn", "spring-boot:run"]
+    volumes:
+      - .:/app
+
+networks:
+  portfolio-nw-dev:
+    external: true

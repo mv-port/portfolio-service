@@ -1,19 +1,26 @@
 services:
-  portfolio-service:
+  mvp-portfolio-service-dev:
     build:
       context: .
       dockerfile: Dockerfile.dev
-    container_name: portfolio-service-dev
+    container_name: mvp-portfolio-service-dev
     ports:
       - "8101:8080"
     env_file:
       - .env
     networks:
-    - portfolio-nw-dev 
+    - mvp-nw-dev 
     command: ["mvn", "spring-boot:run"]
+    logging:
+        driver: "json-file"
+        options:
+          max-size: "10m"
+          max-file: "5"
     volumes:
       - .:/app
+      - /var/log/dev:/var/log/dev/
 
 networks:
-  portfolio-nw-dev:
+  mvp-nw-dev:
     external: true
+

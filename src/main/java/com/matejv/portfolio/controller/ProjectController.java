@@ -12,6 +12,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.matejv.portfolio.PortfolioServiceApplication;
 import com.matejv.portfolio.entity.Project;
 import com.matejv.portfolio.service.ProjectService;
 
@@ -21,11 +25,14 @@ import jakarta.validation.Valid;
 @RequestMapping("/api/projects")
 public class ProjectController {
 
+  private static final Logger logger = LoggerFactory.getLogger(PortfolioServiceApplication.class);
+
   @Autowired
   private ProjectService projectService;
 
   @PostMapping
   public ResponseEntity<Project> createProject(@Valid @RequestBody Project project) {
+    logger.info("Creating project: {}", project);
     Project savedProject = projectService.saveProject(project);
     return ResponseEntity.ok(savedProject);
   }
@@ -42,12 +49,17 @@ public class ProjectController {
 
   @GetMapping
   public List<Project> getAllProjects() {
-    return projectService.findAllProjects();
-  }
+    logger.info("Fetching all projects");
 
-  @GetMapping("/active")
-  public List<Project> getActiveProjects() {
-    return projectService.findActiveProjects();
+    List<Project> projects = projectService.findAllProjects();
+
+    if (projects.isEmpty()) {
+      logger.info("No projects found");
+    } else {
+      logger.info("Found {} projects", projects);
+    }
+
+    return projects;
   }
 
   @DeleteMapping("/{id}")

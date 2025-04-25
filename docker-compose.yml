@@ -18,7 +18,6 @@ services:
           max-file: "5"
     volumes:
       - .:/app
-      - /var/log/dev:/var/log/dev/
 
 networks:
   mvp-nw-dev:

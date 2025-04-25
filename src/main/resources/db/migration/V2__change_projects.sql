@@ -1,0 +1,2 @@
+ALTER TABLE projects ALTER COLUMN project_url DROP NOT NULL;
+

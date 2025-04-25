@@ -1,6 +1,6 @@
 package com.matejv.portfolio.validation.validator;
 
-import com.matejv.portfolio.validation.annotation.Unique;
+import com.matejv.portfolio.validation.constraints.Unique;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.validation.ConstraintValidator;

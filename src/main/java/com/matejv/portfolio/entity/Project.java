@@ -7,7 +7,7 @@ import jakarta.validation.constraints.Size;
 
 import java.time.LocalDateTime;
 
-import com.matejv.portfolio.validation.annotation.Unique;
+import com.matejv.portfolio.validation.constraints.Unique;
 
 @Entity
 @Table(name = "projects")

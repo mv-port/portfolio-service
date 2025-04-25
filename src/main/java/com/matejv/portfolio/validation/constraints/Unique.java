@@ -1,4 +1,4 @@
-package com.matejv.portfolio.validation.annotation;
+package com.matejv.portfolio.validation.constraints;
 
 import jakarta.validation.Constraint;
 import jakarta.validation.Payload;

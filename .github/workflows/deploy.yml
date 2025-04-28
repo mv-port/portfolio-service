@@ -5,6 +5,10 @@ on:
     tags:
       - 'v*'
 
+permissions:
+  contents: write
+
+
 jobs:
   deploy:
     uses: mv-port/actions/.github/workflows/deploy.yml@deploy-2.0

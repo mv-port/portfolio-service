@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  mvp-portfolio-service:
+    image: matejv30/mvp-portfolio-service:latest  
+    container_name: mvp-portfolio-service
+    env_file:
+      - .env 
+    ports:
+      - "8101:8080"  # Expose internal 8080 to public 8101
+    networks:
+      - mvp-nw-prod
+    restart: always
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "5"
+
+networks:
+  mvp-nw-prod:
+    external: true

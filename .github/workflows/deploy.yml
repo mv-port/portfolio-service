@@ -1,0 +1,11 @@
+name: Deploy to Production
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  deploy:
+    uses: vanm30-portfolio/actions/.github/workflows/deploy.yml@deploy-2.0
+    secrets: inherit
